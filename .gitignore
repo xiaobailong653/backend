@@ -101,4 +101,4 @@ ENV/
 .mypy_cache/
 
 # django
-./dianbing/migrations/
+.dianbing/migrations/
