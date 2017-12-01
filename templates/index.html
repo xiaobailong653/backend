@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block leftside %}
+    {% include "leftside.html"%}
+{% endblock %}
+{% block main %}
+{% verbatim %}
+    <div ng-app="app">
+        <div ui-view>
+            <div style="height: 100vh;text-align: center;vertical-align: middle;font-size: 100px;font-family: 'Consolas', 'Deja Vu Sans Mono', 'Bitstream Vera Sans Mono', monospace">
+                <img src="/static/images/emoji-3.png">
+                <p>Good Day!</p>
+            </div>
+        </div>
+    </div>
+{% endverbatim %}
+{% endblock %}

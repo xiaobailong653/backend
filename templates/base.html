@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>管理后台</title>
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  <link rel="shortcut icon" href="/static/images/favicon.ico"/>
+  <link rel="bookmark" href="/static/images/favicon.ico"/>
+  <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/static/css/font-awesome.min.css">
+  <link rel="stylesheet" href="/static/css/AdminLTE.min.css">
+  <link rel="stylesheet" href="/static/css/skins/_all-skins.min.css">
+  <link rel="stylesheet" href="/static/css/sweetalert2.min.css">
+  <link rel="stylesheet" href="/static/css/isteven-multi-select.css">
+  <link rel="stylesheet" href="/static/css/angular-datepicker.css">
+  <link rel="stylesheet" href="/static/css/bootstrap-datetimepicker.css">
+  <link rel="stylesheet" href="/static/css/mico.css">
+
+  <link rel="stylesheet" href="/static/css/weekly_star_two.css">
+
+  <link rel="stylesheet" href="/static/css/btnUpload.min.css">
+</head>
+<body class="hold-transition skin-blue sidebar-mini">
+<div class="wrapper" ng-controller="userCtrl">
+  <header class="main-header">
+    <a href="#" class="logo">
+      <span class="logo-mini">管理后台</span>
+      <span class="logo-lg"><b>管理后台</b></span>
+    </a>
+    <nav class="navbar navbar-static-top" >
+      <!-- Sidebar toggle button-->
+      <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+        <span class="sr-only">Toggle navigation</span>
+      </a>
+      <div class="navbar-custom-menu">
+        <ul class="nav navbar-nav">
+          <li class="dropdown user user-menu">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              <span class="hidden-xs"><i class="fa fa-gears"></i></span>
+            </a>
+            <ul class="dropdown-menu">
+              <li class="user-footer">
+                <div class="pull-left"><a href="#" class="btn btn-default btn-flat" data-toggle="modal" data-target="#modifyPassword">修改密码</a></div>
+                <div class="pull-right"><a ng-click="logout()" class="btn btn-default btn-flat">登出</a></div>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+  {% block leftside %}{% endblock %}
+  <div class="content-wrapper">
+    <div class="box">
+        {% block main %}{% endblock %}
+    </div>
+  </div>
+  <aside class="control-sidebar control-sidebar-dark">
+    <!-- Create the tabs -->
+    <ul class="nav nav-tabs nav-justified control-sidebar-tabs">
+      <li><a href="#control-sidebar-home-tab" data-toggle="tab"><i class="fa fa-home"></i></a></li>
+      <li><a href="#control-sidebar-settings-tab" data-toggle="tab"><i class="fa fa-gears"></i></a></li>
+    </ul>
+  </aside>
+  <!-- Loadding -->
+  <div class="static-spinner" ng-show="loadding">
+    <div class="bounce1"></div>
+    <div class="bounce2"></div>
+    <div class="bounce3"></div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="modifyPassword" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" ng-controller="userCtrl" data-backdrop=true>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">关闭</span></button>
+        <h4 class="modal-title" id="myModalLabel">修改密码</h4>
+      </div>
+      <div class="modal-body">
+          <form class="form-horizontal" role="form" name="myForm">
+            <div class="form-group">
+              <label class="col-sm-3 control-label" >旧密码</label>
+              <div class="col-sm-9">
+                <input  class="form-control" ng-model="modifyData.old_password">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-3 control-label" >新密码</label>
+              <div class="col-sm-9">
+                <input  class="form-control" ng-model="modifyData.new_password">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-3 control-label" >确认密码</label>
+              <div class="col-sm-9">
+                <input  class="form-control" ng-model="modifyData.confirm_password">
+              </div>
+            </div>
+          </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="modify_password(modifyData)" ng-disabled="myForm.$error.required">保存</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="/static/js/common/jquery.min.js"></script>
+<script src="/static/js/common/bootstrap.min.js"></script>
+<script src="/static/js/common/angular.min.js"></script>
+<script src="/static/js/common/angular-ui-router.min.js"></script>
+<script src="/static/js/common/angular-resource.min.js"></script>
+<script src="/static/js/common/ui-bootstrap-tpls.js"></script>
+<script src="/static/js/datetimepicker/moment.js"></script>
+<script src="/static/js/datetimepicker/moment-timezone-with-data.min.js"></script>
+<script src="/static/js/datetimepicker/bootstrap-datetimepicker.js"></script>
+<script src="/static/js/common/ng-file-upload.js"></script>
+<script src="/static/js/common/ng-file-upload.min.js"></script>
+<script src="/static/js/common/ui-bootstrap-tpls.js"></script>
+<script src="/static/js/common/jqPaginator.js"></script>
+<script src="/static/js/common/paging.min.js"></script>
+<script src="/static/js/common/sweetalert2.min.js"></script>
+<script src="/static/js/common/bootstrap-multiselect.js"></script>
+<script src="/static/js/common/angularjs-dropdown-multiselect.min.js"></script>
+<script src="/static/js/common/isteven-multi-select.js"></script>
+<script src="/static/js/admin/app.min.js"></script>
+<script src="/static/js/admin/base.js"></script>
+
+<script src="/static/js/main/app.js"></script>
+<script src="/static/js/main/factory.js"></script>
+<script src="/static/js/main/controller.js"></script>
+
+<script src="/static/js/jwplayer/jwplayer.js"></script>
+<script src="/static/js/common/wangEditor.min.js"></script>
+<script src="/static/js/common/jquery_ui.js"></script>
+<script src="/static/js/common/sortable.js"></script>
+<script src="/static/js/common/angular-upload.min.js"></script>
+<script src="/static/js/common/checklist.js"></script>
+<script src="/static/js/common/PerfectLoad.js"></script>
+<script src="/static/js/common/bootstrap-suggest.js"></script>
+<script type="text/javascript">jwplayer.key="GCYwzyoVgGERevmE12KuEQgQUQl8T04eW/seRQ==";</script>
+</body>
+</html>

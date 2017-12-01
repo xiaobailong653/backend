@@ -1,0 +1,44 @@
+<aside class="main-sidebar">
+  <section class="sidebar">
+    <div class="user-panel" ng-controller="userCtrl">
+      <div class="pull-left image">
+        <img src="/static/images/user2-160x160.jpg" class="img-circle" alt="User Image">
+      </div>
+      <div class="pull-left info">
+        <p>{(username)}</p>
+        <a href="#"><i class="fa fa-circle text-success"></i>在线</a>
+      </div>
+    </div>
+    <ul class="sidebar-menu">
+      <li class="header">用户导航</li>
+      <li class="treeview">
+        <a href="javascript:;">
+          <i class="fa fa-user"></i> <span>用户管理</span>
+          <span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+          </span>
+        </a>
+        <ul class="treeview-menu">
+          <li><a href="#/user/list/"><i class="fa fa-user-circle"></i>用户列表</a></li>
+          <li><a href="#/user/list/"><i class="fa fa-user-circle"></i>权限管理</a></li>
+        </ul>
+      </li>
+    </ul>
+    <ul class="sidebar-menu">
+      <li class="header">业务导航</li>
+      <li class="treeview">
+        <a href="javascript:;">
+          <i class="fa fa-user"></i> <span>主要业务</span>
+          <span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+          </span>
+        </a>
+        <ul class="treeview-menu">
+          <li><a href="#/second/list/"><i class="fa fa-user-circle"></i>订单汇总</a></li>
+          <li><a href="#/second/rank/"><i class="fa fa-user-circle"></i>订单查询</a></li>
+          <li><a href="#/second/rank/"><i class="fa fa-user-circle"></i>异常订单</a></li>
+        </ul>
+      </li>
+    </ul>
+  </section>
+</aside>

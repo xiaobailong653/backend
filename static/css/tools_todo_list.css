@@ -1,0 +1,166 @@
+/*select,input,button,label {*/
+    /*height: 30px;*/
+    /*display: inline-block;*/
+    /*margin: 10px;*/
+    /*border: 2px solid #000;*/
+    /*background: #fff;*/
+    /*padding: 3px;*/
+    /*min-width: 100px;*/
+/*}*/
+/*label {*/
+    /*color: #0d6aad;*/
+/*}*/
+
+.hand_cursor {
+    cursor: hand;
+    cursor: pointer;
+}
+
+input {
+    border: none;
+    min-width: 300px;
+}
+
+/* 整个功能块儿 */
+.tools_todo_list_whole {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    min-height: 500px;
+    height: 100%;
+    position: relative;
+}
+
+/* 左边的列表 */
+.tools_todo_list {
+    /*width: 30%;*/
+    position: absolute;
+    left: 0;
+    width: 200px;
+    height: 100%;
+    overflow: scroll;
+    display: block;
+    margin: 0;
+    border: 1px solid #aaaaaa;
+}
+
+h2 {
+    text-align: center;
+}
+
+/* 每一个todo项目 */
+.tools_todo_item {
+    border-bottom: 2px solid #eeeeee;
+    width: 100%;
+    height: 100px;
+    overflow: hidden;
+    background: #afd9ee;
+    text-align: center;
+    vertical-align: middle;
+    padding: 20px;
+}
+
+.tools_todo_item:hover {
+    background: #ffd9ee;
+}
+/* 点击选中，改变颜色 */
+.tools_todo_item_selected {
+    background: #d9ffee;
+}
+
+/* 选中项目的具体内容 */
+.tools_todo_select_item {
+    width: 500px;
+    min-height: 300px;
+    position: absolute;
+    left: 200px;
+    padding: 20px;
+}
+
+.tools_todo_select_item_empty {
+    font-size: 30px;
+    color: #333333;
+    text-align: center;
+}
+
+/* 标题 */
+.tools_todo_select_item_content_title {
+    font-size: 20px;
+    font-weight: 600;
+    border-bottom: 1px solid #eee;
+}
+
+/* 具体的内容 */
+.tools_todo_select_item_content_p {
+    margin-top: 20px;
+    font-size: 16px;
+
+}
+
+/* 增加条目按钮 */
+.tools_todo_select_item_content_p_add {
+    font-size: 20px;
+    min-width: 24px;
+    height: 24px;
+    color: #c6c6c6;
+    border: 1px solid #c6c6c6;
+    border-radius: 12px;
+    display: inline-block;
+    padding: 0 5px;
+    margin: 0 10px;
+    vertical-align: middle;
+    line-height: 24px;
+}
+.tools_todo_select_item_content_p_add:hover {
+    background: #eee;
+}
+
+/* 每个todo项目
+ 包含前面的对号标识，和后面的文字描述
+*/
+.tools_todo_select_item_content_p_item {
+    display: block;
+    margin-top: 20px;
+}
+
+.tools_todo_select_item_content_p_item div {
+    display: inline-block;
+}
+
+.tools_todo_select_item_content_p_item_ok {
+    width: 20px;
+    height: 20px;
+    font-weight: 600;
+}
+
+.tools_todo_select_item_content_p_item_ok_complete:before {
+    content: "√";
+    color: #777;
+}
+
+.tools_todo_select_item_content_p_item_ok_non_complete:before {
+    content: "〇";
+
+}
+
+.tools_todo_select_item_content_p_item_content {
+    line-height: 20px;
+}
+
+.tools_todo_add_item {
+    text-align: center;
+    vertical-align: middle;
+}
+.tools_todo_add_item p {
+    font-size: 20px;
+    width: 30px;
+    height: 30px;
+    border: 1px solid #000;
+    border-radius: 100%;
+    margin: 15px auto;
+
+}
+
+
+
+

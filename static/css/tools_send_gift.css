@@ -1,0 +1,83 @@
+select,input,button,label,textarea {
+    height: 30px;
+    display: inline-block;
+    margin: 10px;
+    border: 2px solid #000;
+    background: #fff;
+    padding: 3px;
+    min-width: 100px;
+}
+label {
+    color: #0d6aad;
+}
+.tools_send_gift_whole {
+    font-family: 'Consolas', 'Deja Vu Sans Mono', 'Bitstream Vera Sans Mono', monospace;
+    margin: 0 auto;
+    width: 500px;
+}
+textarea {
+    display: block;
+    min-height: 50px;
+    width: 300px;
+    margin-top: 0;
+    resize: none;
+}
+button:disabled {
+    background: gray;
+}
+button:disabled:hover {
+    cursor: not-allowed;
+}
+
+.hand_cursor {
+    cursor: hand;
+    cursor: pointer;
+}
+
+/* 整个功能块 */
+.tools_crud_whole {
+    width: 800px;
+    margin: 0 auto;
+}
+
+/* 整个table_name 列表 */
+.tools_crud_table_list {
+    width: 100%;
+    min-height: 100px;
+    max-height: 300px;
+    padding: 20px;
+    overflow: scroll;
+}
+
+/* 每个table 可以点击 */
+.tools_crud_table_list_every {
+    display: inline-block;
+    margin-left: 20px;
+    margin-top: 10px;
+    height: 30px;
+    line-height: 30px;
+    border: 1px solid #eee;
+    background: #afd9ee;
+    border-radius: 3px;
+    padding: 0 3px;
+}
+
+.tools_crud_table_list_every:hover {
+    background: #ffd9ee;
+}
+
+
+/* JSON合法性提示 */
+.tools_send_gift_notice {
+    color: red;
+}
+
+
+/* 查询参数 */
+.tools_send_gift_params {
+    overflow: scroll;
+    padding: 10px;
+    font-size: 16px;
+    font-family: 'Consolas', 'Deja Vu Sans Mono', 'Bitstream Vera Sans Mono', monospace;
+    max-height: 300px;
+}
