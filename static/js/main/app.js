@@ -18,6 +18,26 @@
           url: '/user/list/',
           templateUrl: '/backend/view/user/list/',
           controller: 'userListCtrl'
+      }).state('permissionList', {
+          url: '/permission/list/',
+          templateUrl: '/backend/view/permission/list/',
+          controller: 'permissionListCtrl'
+      }).state('productList', {
+          url: '/product/list/',
+          templateUrl: '/backend/view/product/list/',
+          controller: 'productListCtrl'
+      }).state('orderList', {
+          url: '/order/list/',
+          templateUrl: '/backend/view/order/list/',
+          controller: 'orderListCtrl'
+      }).state('orderTotal', {
+          url: '/order/total/',
+          templateUrl: '/backend/view/order/total/',
+          controller: 'orderTotalCtrl'
+      }).state('orderAbnormal', {
+          url: '/order/abnormal/',
+          templateUrl: '/backend/view/order/abnormal/',
+          controller: 'orderAbnormalCtrl'
       });
   });
 
