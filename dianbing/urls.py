@@ -4,6 +4,7 @@ from dianbing.views import views_route
 from dianbing.apis import (
     api_user,
     api_product,
+    api_order,
 )
 
 urlpatterns = [
@@ -25,4 +26,14 @@ urlpatterns += [
     url(r'^api/product/update/$', api_product.product_update),
     url(r'^api/product/delete/$', api_product.product_delete),
     url(r'^api/product/mini/list/$', api_product.product_mini_list),
+]
+
+
+urlpatterns += [
+    url(r'^api/order/list/$', api_order.order_list),
+    url(r'^api/order/info/$', api_order.order_info),
+    url(r'^api/order/create/$', api_order.order_create),
+    url(r'^api/order/update/$', api_order.order_update),
+    url(r'^api/order/delete/$', api_order.order_delete),
+    url(r'^api/order/make/$', api_order.MakeOrder.as_view()),
 ]

@@ -132,3 +132,5 @@ STATICFILES_DIRS = (
     ("fonts", os.path.join(STATIC_ROOT, 'fonts')),
     ("json", os.path.join(STATIC_ROOT, 'json')),
 )
+
+APPSECRET = "shanchangdianbing"

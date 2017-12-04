@@ -85,9 +85,7 @@
       size: 20,
       index: 1
     };
-    $http.get('/backend/api/product/mini/list/', {params: data}).success(function(response) {
 
-    });
     $scope.search = function() {
       $rootScope.loadding = true;
       var data = angular.extend($scope.pager, $scope.query);
@@ -225,7 +223,7 @@
         return $rootScope.loadding = false;
       });
     };
-
+    $scope.search();
     $scope.change_page = function() {
       return $scope.search();
     };
