@@ -25,7 +25,7 @@ class Sakesman(models.Model):
 class Product(models.Model):
     product_id = models.AutoField(primary_key=True)
     product_name = models.CharField(max_length=128)
-    product_model = models.SmallIntegerField(default=0)                     # 产品型号
+    product_model = models.CharField(max_length=512)                     # 产品型号
     image = models.CharField(max_length=128, default="")
     video = models.CharField(max_length=128, default="")
     price = models.IntegerField(default=0)
@@ -40,6 +40,7 @@ class Product(models.Model):
                     video=self.video,
                     price=self.price,
                     stock=self.stock,
+                    product_model=self.product_model,
                     create_time=self.create_time)
 
 
@@ -53,7 +54,7 @@ class ProductModel(models.Model):
 class Order(models.Model):
     order_id = models.BigIntegerField()
     product = models.ForeignKey(Product)
-    product_model = models.ForeignKey(ProductModel, default="")
+    product_model = models.CharField(max_length=512)
     name = models.CharField(max_length=128)
     phone = models.CharField(max_length=128, default="")
     province = models.CharField(max_length=128, default="")

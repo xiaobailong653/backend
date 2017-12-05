@@ -1,6 +1,8 @@
+# -*- coding: utf-8 -*-
+import json
 from rest_framework.views import APIView
 from django.http import JsonResponse
-from django.core import settings
+from django.conf import settings
 import hashlib
 
 
@@ -15,13 +17,13 @@ class BaseApi(APIView):
         return JsonResponse(dict(code=-1, message="Method not found"))
 
     def get_arguments(self, request):
-        sign = request.META.get("HTTP_SING", 0)
-        args = request.body
+        sign = request.META.get("HTTP_SIGN", 0)
+        args = json.loads(request.body)
         keys = sorted(args.keys())
         appsecret = settings.APPSECRET
         s = appsecret
         for key in keys:
-            s += "{}{}".format(args[key], key)
+            s += "{}{}".format(args[key].encode("utf-8"), key)
         s += appsecret
         m = hashlib.md5()
         m.update(s)

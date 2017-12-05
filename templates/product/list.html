@@ -37,6 +37,7 @@
           <th>视频</th>
           <th>单价</th>
           <th>库存</th>
+          <th>型号</th>
           <th>创建时间</th>
           <th>操作</th>
         </tr>
@@ -49,6 +50,7 @@
           <td>{(item.video)}</td>
           <td>{(item.price)}</td>
           <td>{(item.stock)}</td>
+          <td>{(item.product_model)}</td>
           <td>{(item.create_time | date:'yyyy-MM-dd HH:mm:ss')}</td>
           <td><a class="btn btn-sm btn-info" data-toggle="modal" data-target="#Dialog" ng-click="update(item.product_id)">编辑</a>
           <a class="btn btn-sm btn-info" ng-click="delete(item.product_id)">删除</a></td>
@@ -72,31 +74,37 @@
             <div class="form-group">
               <label class="col-sm-3 control-label">名称</label>
               <div class="col-sm-9">
-                <input  class="form-control" ng-model="formData.product_name">
+                <input class="form-control" ng-model="formData.product_name">
               </div>
             </div>
             <div class="form-group">
               <label class="col-sm-3 control-label">图片</label>
               <div class="col-sm-9">
-                <input  class="form-control" ng-model="formData.image">
+                <input class="form-control" ng-model="formData.image">
               </div>
             </div>
             <div class="form-group">
               <label class="col-sm-3 control-label">视频</label>
               <div class="col-sm-9">
-                <input  class="form-control" ng-model="formData.video">
+                <input class="form-control" ng-model="formData.video">
               </div>
             </div>
             <div class="form-group">
               <label class="col-sm-3 control-label">单价</label>
               <div class="col-sm-9">
-                <input  class="form-control" ng-model="formData.price" type="number" min=0>
+                <input class="form-control" ng-model="formData.price" type="number" min=0>
               </div>
             </div>
             <div class="form-group">
               <label class="col-sm-3 control-label">库存</label>
               <div class="col-sm-9">
-                <input  class="form-control" ng-model="formData.stock" type="number" min=0>
+                <input class="form-control" ng-model="formData.stock" type="number" min=0>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-3 control-label">型号</label>
+              <div class="col-sm-9">
+                <input class="form-control" ng-model="formData.product_model">
               </div>
             </div>
           </form>
