@@ -216,7 +216,7 @@
     $scope.search = function() {
       $rootScope.loadding = true;
       var data = angular.extend($scope.pager, $scope.query);
-      $http.get('/backend/api/product/list/', {params: data}).success(function(response) {
+      $http.get('/backend/api/order/list/', {params: data}).success(function(response) {
         $scope.list = response.data;
         console.log($scope.list);
         $scope.pager.total = response.total;
@@ -226,6 +226,14 @@
     $scope.search();
     $scope.change_page = function() {
       return $scope.search();
+    };
+
+    $scope.order_info = function(order_id) {
+      console.log(order_id);
+      var data = {order_id: order_id};
+      $http.get('/backend/api/order/info/', {params: data}).success(function(response) {
+        $scope.formData = response.data;
+      });
     };
   });
 

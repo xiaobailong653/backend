@@ -24,7 +24,7 @@ urlpatterns += [
 urlpatterns += [
     url(r'^api/product/list/$', login_required(api_product.ProductList.as_view())),
     url(r'^api/product/info/$', login_required(api_product.ProductInfo.as_view())),
-    url(r'^api/product/create/$', login_required(api_product.ProductCreate.as_view())),
+    url(r'^api/product/create/$', api_product.ProductCreate.as_view()),
     url(r'^api/product/update/$', login_required(api_product.ProductUpdate.as_view())),
     url(r'^api/product/delete/$', login_required(api_product.ProductDelete.as_view())),
     url(r'^api/product/mini/list/$', login_required(api_product.ProductMiniList.as_view())),

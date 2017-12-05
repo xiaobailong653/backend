@@ -1,12 +1,22 @@
 # -*- coding: utf-8 -*-
 import json
 from rest_framework.views import APIView
+from rest_framework.authentication import SessionAuthentication, BasicAuthentication
 from django.http import JsonResponse
 from django.conf import settings
 import hashlib
 
 
+class CsrfExemptSessionAuthentication(SessionAuthentication):
+
+    def enforce_csrf(self, request):
+        return  # To not perform the csrf check previously happening
+
+
 class BaseApi(APIView):
+    authentication_classes = (
+        CsrfExemptSessionAuthentication, BasicAuthentication
+    )
 
     def get(self, request, *args, **kwargs):
 

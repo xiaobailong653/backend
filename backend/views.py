@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 import json
 from django.shortcuts import render_to_response
+from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.decorators import login_required
 from django.contrib import auth
 from django.http import JsonResponse
@@ -11,6 +12,7 @@ def index(request):
     return render_to_response("index.html")
 
 
+@csrf_exempt
 def login(request):
     if request.method == "POST":
         data = json.loads(request.body)

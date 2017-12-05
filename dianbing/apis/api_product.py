@@ -8,6 +8,7 @@ from django.core.paginator import (
     PageNotAnInteger,
     EmptyPage)
 from _base import BaseApi
+from django.views.decorators.csrf import csrf_exempt
 
 __author__ = 'Sunlf'
 
@@ -50,6 +51,7 @@ class ProductInfo(BaseApi):
 
 
 class ProductCreate(BaseApi):
+    @csrf_exempt
     def post(self, request):
         args = json.loads(request.body)
         obj = Product()

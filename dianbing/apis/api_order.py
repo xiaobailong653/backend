@@ -56,9 +56,13 @@ class OrderList(BaseApi):
 
 class OrderInfo(BaseApi):
     def get(self, request):
-        order_id = int(request.GET.get("order_id") or 0)
-        obj = Order.objects.get(pk=order_id)
-        data = obj.base_info()
+        order_id = long(request.GET.get("order_id") or 0)
+        try:
+            obj = Order.objects.get(order_id=order_id)
+            data = obj.base_info()
+            print data
+        except ObjectDoesNotExist:
+            data = {}
         return JsonResponse(dict(data=data))
 
 

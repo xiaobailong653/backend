@@ -44,15 +44,8 @@ class Product(models.Model):
                     create_time=self.create_time)
 
 
-class ProductModel(models.Model):
-    model_id = models.AutoField(primary_key=True)
-    product = models.ForeignKey(Product)
-    model_name = models.CharField(max_length=128)
-    create_time = models.DateTimeField(auto_now_add=True)
-
-
 class Order(models.Model):
-    order_id = models.BigIntegerField()
+    order_id = models.AutoField(primary_key=True)
     product = models.ForeignKey(Product)
     product_model = models.CharField(max_length=512)
     name = models.CharField(max_length=128)
@@ -69,6 +62,7 @@ class Order(models.Model):
 
     def base_info(self):
         return dict(order_id=self.order_id,
+                    name=self.name,
                     phone=self.phone,
                     address="{} {} {}".format(self.province, self.city, self.detail_address),
                     payment_type=self.payment_type,

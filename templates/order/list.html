@@ -40,9 +40,7 @@
           <th>姓名</th>
           <th>手机号</th>
           <th>详细地址</th>
-          <th>业务员</th>
           <th>支付方式</th>
-          <th>是否为协助下单</th>
           <th>状态</th>
           <th>提交时间</th>
           <th>操作</th>
@@ -50,12 +48,14 @@
       </thead>
       <tbody>
         <tr ng-repeat="item in list">
-          <td>{(item.user_id)}</td>
-          <td>{(item.user_name)}</td>
-          <td>{(item.group_name)}</td>
+          <td>{(item.name)}</td>
+          <td>{(item.phone)}</td>
+          <td>{(item.address)}</td>
+          <td>{(item.payment_type == 1 ? "货到付款" : "线上支付")}</td>
+          <td>{(item.status)}</td>
           <td>{(item.create_time | date:'yyyy-MM-dd HH:mm:ss')}</td>
-          <td><a class="btn btn-sm btn-info" href="#/region/update/?region_id={(item.region_id)}">编辑</a>
-          <a class="btn btn-sm btn-info" ng-click="delete(item.region_id)">删除</a></td>
+          <td><a class="btn btn-sm btn-info" data-toggle="modal" data-target="#Dialog" ng-click="order_info(item.order_id)">查看</a>
+          <a class="btn btn-sm btn-info" ng-click="delete(item.product_id)">删除</a></td>
         </tr>
       </tbody>
     </table>
@@ -64,56 +64,73 @@
 </div>
 
 <!-- Modal -->
-<div class="modal fade" id="modifyPassword" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" ng-controller="userCtrl" data-backdrop=true>
+<div class="modal fade" id="Dialog" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" ng-controller="userCtrl" data-backdrop=true>
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">关闭</span></button>
-        <h4 class="modal-title" id="myModalLabel">创建用户</h4>
+        <h4 class="modal-title" id="myModalLabel">订单查看</h4>
       </div>
       <div class="modal-body">
           <form class="form-horizontal" role="form" name="myForm">
             <div class="form-group">
-              <label class="col-sm-3 control-label" >用户名称</label>
+              <label class="col-sm-3 control-label">订单ID</label>
               <div class="col-sm-9">
-                <input  class="form-control" ng-model="formData.username">
+                <input  class="form-control" ng-model="formData.order_id">
               </div>
             </div>
             <div class="form-group">
-              <label class="col-sm-3 control-label" >用户密码</label>
+              <label class="col-sm-3 control-label">产品名称</label>
               <div class="col-sm-9">
-                <input  class="form-control" ng-model="formData.password">
+                <input  class="form-control" ng-model="formData.product_name">
               </div>
             </div>
             <div class="form-group">
-              <label class="col-sm-3 control-label" >确认密码</label>
+              <label class="col-sm-3 control-label">款式</label>
               <div class="col-sm-9">
-                <input  class="form-control" ng-model="formData.confirm_password">
+                <input  class="form-control" ng-model="formData.product_model">
               </div>
             </div>
             <div class="form-group">
-              <label class="col-sm-3 control-label" >上级</label>
+              <label class="col-sm-3 control-label">用户名称</label>
               <div class="col-sm-9">
-                <select ng-model="formData.parent_id" ng-options="item.region_id as item.region_name for item in regions"><option></option></select>
+                <input  class="form-control" ng-model="formData.name">
               </div>
             </div>
             <div class="form-group">
-              <label class="col-sm-3 control-label" >邮箱</label>
-              <div class="col-sm-9">
-                <input  class="form-control" ng-model="formData.email">
-              </div>
-            </div>
-            <div class="form-group">
-              <label class="col-sm-3 control-label" >电话</label>
+              <label class="col-sm-3 control-label">电话号码</label>
               <div class="col-sm-9">
                 <input  class="form-control" ng-model="formData.phone">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-3 control-label">收货地址</label>
+              <div class="col-sm-9">
+                <input  class="form-control" ng-model="formData.address">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-3 control-label" >支付方式</label>
+              <div class="col-sm-9">
+                <input  class="form-control" ng-model="formData.payment">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-3 control-label" >状态</label>
+              <div class="col-sm-9">
+                <input  class="form-control" ng-model="formData.status">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-3 control-label" >提交时间</label>
+              <div class="col-sm-9">
+                <input  class="form-control" ng-model="formData.create_time">
               </div>
             </div>
           </form>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-        <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="create(formData)" ng-disabled="myForm.$error.required">保存</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">确定</button>
       </div>
     </div>
   </div>
