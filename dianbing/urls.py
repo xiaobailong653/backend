@@ -5,6 +5,7 @@ from dianbing.apis import (
     api_user,
     api_product,
     api_order,
+    api_upload,
 )
 from django.contrib.auth.decorators import login_required
 
@@ -34,4 +35,8 @@ urlpatterns += [
 urlpatterns += [
     url(r'^api/order/list/$', login_required(api_order.OrderList.as_view())),
     url(r'^api/order/info/$', login_required(api_order.OrderInfo.as_view())),
+]
+
+urlpatterns += [
+    url(r'^api/upload/file/$', login_required(api_upload.FileUpload.as_view())),
 ]

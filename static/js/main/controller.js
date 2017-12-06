@@ -138,6 +138,20 @@
         $scope.search();
       });
     };
+
+    $scope.uploadFile = function(file_type) {
+      $rootScope.loadding = true;
+      var file = document.getElementById("imageUpload").files[0];
+      return $http({
+        url: '/backend/api/upload/file/?file_type=' + file_type,
+        method: 'POST',
+        data: file
+      }).success(function(data, status, headers, config) {
+        $rootScope.loadding = false;
+        $scope.formData[file_type] = data.data;
+        return console.log(data);
+      });
+    };
   });
 
   app.controller("orderTotalCtrl", function($scope, $rootScope, $http, $location) {
