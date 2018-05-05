@@ -102,3 +102,4 @@ ENV/
 
 # django
 dianbing/migrations/
+dianbing.sqlite3
