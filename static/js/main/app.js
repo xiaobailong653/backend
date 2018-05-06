@@ -22,6 +22,10 @@
           url: '/permission/list/',
           templateUrl: '/backend/view/permission/list/',
           controller: 'permissionListCtrl'
+      }).state('productType', {
+          url: '/product/type/',
+          templateUrl: '/backend/view/product/type/',
+          controller: 'productTypeCtrl'
       }).state('productList', {
           url: '/product/list/',
           templateUrl: '/backend/view/product/list/',

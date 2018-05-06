@@ -77,6 +77,83 @@
 
   });
 
+  app.controller("productTypeCtrl", function($scope, $rootScope, $http, $location) {
+    $scope.list = [];
+    $scope.total_aggregate = [];
+    $scope.pager = {
+      total: 0,
+      size: 20,
+      index: 1
+    };
+    $scope.type_status = [{"label": "正常", "value": 1}, {"label": "下架", "value": 0}];
+
+    $scope.search = function() {
+      $rootScope.loadding = true;
+      var data = angular.extend($scope.pager, $scope.query);
+      $http.get('/backend/api/product/type/list', {params: data}).success(function(response) {
+        $scope.list = response.data;
+        $scope.pager.total = response.total;
+        return $rootScope.loadding = false;
+      });
+    };
+
+    $scope.search();
+    $scope.change_page = function() {
+      return $scope.search();
+    };
+    $scope.delete = function(region_id) {
+      if (confirm("Confirm delete?")) {
+        data = {region_id: region_id};
+        $http.post('/backend/api/product/delete/', data).success(function(response) {
+          $rootScope.loadding = true;
+          $scope.search();
+        });
+      }
+    };
+
+    $scope.save = function(formData) {
+      $rootScope.loadding = true;
+      var data = formData;
+      $http.post('/backend/api/product/type/' + data["method"], data).success(function(response) {
+        $rootScope.loadding = false;
+        $scope.search();
+      });
+    };
+
+    $scope.create = function() {
+      $scope.formData = {status: 1, method: "create"};
+    };
+
+    $scope.update = function(type_id) {
+      var data = {type_id: type_id};
+      $http.get('/backend/api/product/type/info', {params: data}).success(function(response) {
+        $scope.formData = response.data;
+        $scope.formData["method"] = "update";
+      });
+    };
+
+    $scope.delete = function(type_id) {
+      var data = {type_id: type_id};
+      $http.post('/backend/api/product/type/delete', data).success(function(response) {
+        $scope.search();
+      });
+    };
+
+    $scope.uploadFile = function(file_type) {
+      $rootScope.loadding = true;
+      var file = document.getElementById("imageUpload").files[0];
+      return $http({
+        url: '/backend/api/upload/file/?file_type=' + file_type,
+        method: 'POST',
+        data: file
+      }).success(function(data, status, headers, config) {
+        $rootScope.loadding = false;
+        $scope.formData[file_type] = data.data;
+        return console.log(data);
+      });
+    };
+  });
+
   app.controller("productListCtrl", function($scope, $rootScope, $http, $location) {
     $scope.list = [];
     $scope.total_aggregate = [];

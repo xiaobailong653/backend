@@ -23,6 +23,7 @@ urlpatterns += [
 
 
 urlpatterns += [
+    url(r'^api/product/type/(?P<path>\w+)$', login_required(api_product.ProductTypeList.as_view())),
     url(r'^api/product/list/$', login_required(api_product.ProductList.as_view())),
     url(r'^api/product/info/$', login_required(api_product.ProductInfo.as_view())),
     url(r'^api/product/create/$', api_product.ProductCreate.as_view()),

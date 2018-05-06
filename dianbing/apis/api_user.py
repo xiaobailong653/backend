@@ -3,7 +3,7 @@ import json
 from django.http import JsonResponse
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
-from dianbing.models import Sakesman
+# from dianbing.models import Sakesman
 from django.core.paginator import (
     Paginator,
     PageNotAnInteger,

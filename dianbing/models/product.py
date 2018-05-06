@@ -28,17 +28,12 @@ class ProductType(models.Model):
     type_desc = models.CharField(max_length=128)
     status = models.SmallIntegerField(default=1)            # 0：不可用，1：可用
     pos = models.IntegerField(default=1)                    # 位置
-    operator = models.CharField(max_length=64, default="")  # 操作人
     create_time = models.DateTimeField(auto_now_add=True)
 
     def base_info(self):
         return dict(type_id=self.type_id,
                     type_name=self.type_name,
-                    type_desc=self.type_desc,
-                    status=self.status,
-                    pos=self.pos,
-                    operator=self.operator,
-                    create_time=self.create_time)
+                    type_desc=self.type_desc)
 
 
 class Product(models.Model):
